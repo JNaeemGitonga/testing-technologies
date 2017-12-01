@@ -11,7 +11,9 @@ const post = data => {
 } 
 
 $(function() {
-
+    $('#boxes-container').on('click', '.boxes', function() {
+        console.log('i work here too on line 15')
+    })
     $('p').click( () =>alert('Iwork'));
     $('#form').submit((e) => {
         e.preventDefault();
@@ -35,4 +37,20 @@ $(function() {
     $('ul').on('click', 'li', function(){
         console.log( $(this).text());
     });
+
+    $('.boxes').on('click', function(){
+        console.log('i work')
+    })
 });
+
+let box = ['cardboard', 'wood', 'steel', 'gold']
+
+setTimeout(function(){
+
+    for ( let i = 0; i < box.length; i++) {
+        $('#boxes-container').append(
+            `<button class='boxes ${box[i]}'>${box[i]}</button>`
+        )
+    }
+
+}, 5000)
