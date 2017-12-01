@@ -8,7 +8,7 @@ const multiply = function (a, b) {
     else{return 'Please enter valid numbers' }
 }
   
-module.exports = multiply;
+
 
 
 const getMiddle = function (word) {
@@ -37,6 +37,7 @@ function cb(data){
     console.log(data)
 }
 // console.log('It does nothing',)
-functionThatDoesNothin("you will see me in 5 sec", cb)
+
+console.log(getMiddle('asssasasasasTTasasasasas'))
 module.exports = getMiddle;
-// console.log(getMiddle('asssasasasasTTasasasasas'))
+module.exports = multiply;
