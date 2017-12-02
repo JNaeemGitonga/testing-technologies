@@ -1,3 +1,4 @@
 #nodepackages
 
 node_modules
+.env
