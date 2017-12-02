@@ -6,13 +6,12 @@ const state = {
 
 }
 
-const post = data => {
-    
-} 
 
 $(function() {
     $('#boxes-container').on('click', '.boxes', function() {
-        console.log('i work here too on line 15')
+        let boxType = $(this).attr('data-box-type')
+        console.log(boxType)
+        
     })
     $('p').click( () =>alert('Iwork'));
     $('#form').submit((e) => {
@@ -21,10 +20,12 @@ $(function() {
         console.log('i work', input);
         // state.line = $('.input1').val();
         state.buttons.push(input)
-        let obj = {test:`${input}`}
+        let obj = {test:[`${input}`]}
         $.post('/test/I_Love_me',obj, res => console.log(res) )
         $('.input1').val('') ; 
     })
+
+
     $('.get-state').click(() => {
         $.get('/test/get', (res) => {
             return Object.assign(state, res,{new:res} )
@@ -36,6 +37,7 @@ $(function() {
         $('.buttons').html(buttons)
 
     })
+
     $('ul').on('click', 'li', function(){
         console.log( $(this).text());
     });
@@ -49,7 +51,7 @@ setTimeout(function(){
 
     for ( let i = 0; i < box.length; i++) {
         $('#boxes-container').append(
-            `<button class='boxes ${box[i]}'>${box[i]}</button>`
+            `<button class='boxes ${box[i]}' data-box-type=${box[i]}>${box[i]}</button>`
         )
     }
 

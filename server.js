@@ -6,8 +6,9 @@ const mysql          = require('mysql');
 const {DATABASE_URL,SECRET} = require('./config')
 const port = 8080;
 
-const server = {
-    dog:'animal'
+let server = {
+    dog:'animal',
+    test:[]
 }
 app.use(bodyParser.urlencoded({extended:true}))
 app.get( '/', (req,res) => {
@@ -18,9 +19,9 @@ app.get('/test/get', (req,res) => {
     res.send(server)
 })
 app.post('/test/:val', (req,res) => {
-    console.log(  req.body)
-    Object.assign(server, req.body, {
-        test:req.body.test
+    console.log(  req.body, server)
+    server = Object.assign({}, server, {
+        test:[ ...server.test, ...req.body.test]
     })
 
     res.status(200).send(server)
