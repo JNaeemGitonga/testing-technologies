@@ -17,9 +17,11 @@ $(function() {
     $('p').click( () =>alert('Iwork'));
     $('#form').submit((e) => {
         e.preventDefault();
-        console.log('i work', $('.input1').val());
+        let input = $('.input1').val()
+        console.log('i work', input);
         // state.line = $('.input1').val();
-        let obj = {test:`${$('.input1').val()}`}
+        state.buttons.push(input)
+        let obj = {test:`${input}`}
         $.post('/test/I_Love_me',obj, res => console.log(res) )
         $('.input1').val('') ; 
     })
@@ -38,9 +40,7 @@ $(function() {
         console.log( $(this).text());
     });
 
-    $('.boxes').on('click', function(){
-        console.log('i work')
-    })
+    
 });
 
 let box = ['cardboard', 'wood', 'steel', 'gold']
