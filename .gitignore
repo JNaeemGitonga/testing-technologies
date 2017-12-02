@@ -1,4 +1,6 @@
 #nodepackages
 
 node_modules
+
+# misc
 .env
