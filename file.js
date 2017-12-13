@@ -1,4 +1,4 @@
-
+const another = require('./another');
 
 const multiply = function (a, b) {
     if ( typeof a === 'number' && typeof b === 'number') {
@@ -36,8 +36,11 @@ function functionThatDoesNothin(cat, dog) {
 function cb(data){
     console.log(data)
 }
-// console.log('It does nothing',)
+console.log('line 39',getMiddle('asssasasasasTTasasasasas'))
+console.log('line 40',process.argv[0] + process.argv[1]);
+console.log('It does nothing')
+console.log(process.argv)
+// console.log('line 43',parseFloat(process.argv[0]) + parseFloat(process.argv[1]));
 
-console.log(getMiddle('asssasasasasTTasasasasas'))
 module.exports = getMiddle;
 module.exports = multiply;

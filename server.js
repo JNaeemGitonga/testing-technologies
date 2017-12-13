@@ -10,6 +10,7 @@ let server = {
     dog:'animal',
     test:[]
 }
+
 app.use(bodyParser.urlencoded({extended:true}))
 app.get( '/', (req,res) => {
     res.sendFile((path.resolve(__dirname, '../test', 'index.html')))
