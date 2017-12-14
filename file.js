@@ -1,6 +1,6 @@
-const yola = require('./yola');
+// const yola = require('./yola');
 const fs = require('fs');
-
+const request = require('request');
 
 const multiply = function (a, b) {
     if ( typeof a === 'number' && typeof b === 'number') {
@@ -41,16 +41,16 @@ function cb(data){
 // console.log(process.argv)
 // console.log('line 43',parseFloat(process.argv[0]) + parseFloat(process.argv[1]));
 // yola.loop()
-console.log(yola.artist)
+// console.log(yola.artist)
 
-const movies = fs.readFile('./movies.txt', 'utf8', (error,data) => {
-    if(error) console.log(error)
-    else{ 
-        console.log( data.split(" ") );
-        let dataArr = data.split(' ');
-        dataArr.forEach(word => console.log('these words: ', word) )
-    }
-})
+// const movies = fs.readFile('./movies.txt', 'utf8', (error,data) => {
+//     if(error) console.log(error)
+//     else{ 
+//         console.log( data.split(" ") );
+//         let dataArr = data.split(' ');
+//         dataArr.forEach(word => console.log('these words: ', word) )
+//     }
+// })
 
 // fs.writeFile('food.txt', 'I made a food file', err => {
 //     if (err) console.log(err)
@@ -60,8 +60,32 @@ const movies = fs.readFile('./movies.txt', 'utf8', (error,data) => {
 //     })}
 // })
 // console.log('LOOK MY PROCESS: ', process)
+let argThree = process.argv[2]
+let searchTerm = process.argv[3];
 
-console.log('LOOK EXPONENTIATION: ', 3 ** 5)
+// console.log('LOOK EXPONENTIATION: ', 3 ** 5)
+const getMovie = (searchTerm) => {
+    request(`http://www.omdbapi.com/?t=${searchTerm}&apikey=trilogy`, (err,response,body) => {
+        if (err) console.log(err);
+        else if( !err & response.statusCode === 200) {
+            console.log(body)
+        }
+    })
+}
 
+if (argThree === 'movie') getMovie(searchTerm)
+
+else if (argThree === 'sort') {
+    let newArr = [];
+   for(let i = 3; i < process.argv.length; i++) {
+       newArr.push(process.argv[i])
+    
+   }
+    let sortedArr = newArr.sort((a,b) => {
+        
+        return a-b
+    })
+    console.log(typeof sortedArr, sortedArr)
+}
 module.exports = getMiddle;
 module.exports = multiply;
