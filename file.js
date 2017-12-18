@@ -20,7 +20,8 @@ const findLocation = location => {
       console.log(chk.red(err));
     });
 }
-inquirer
+let start = () => {
+    inquirer
     .prompt([{
         type:'list',
         name: 'option',
@@ -54,8 +55,11 @@ inquirer
             }
         })
 
+}
 
-/*
+let argTwo = process.argv[2]
+if (argTwo === 'search') start()
+
 const multiply = function (a, b) {
     if ( typeof a === 'number' && typeof b === 'number') {
         return a * b
@@ -79,7 +83,8 @@ const getMiddle = function (word) {
     }
 }
 
-*/
+
+
 
 /*
     [CALLBACK FUN]
@@ -95,34 +100,33 @@ const getMiddle = function (word) {
     }
 
 */
+
 console.log('line 39',getMiddle('asssasasasasTTasasasasas'))
-console.log('line 40',process.argv[0] + process.argv[1]);
-console.log('It does nothing')
-console.log(process.argv)
-console.log('line 43',parseFloat(process.argv[0]) + parseFloat(process.argv[1]));
-yola.loop()
-console.log(yola.artist)
 
-const movies = fs.readFile('./movies.txt', 'utf8', (error,data) => {
-    if(error) console.log(error)
-    else{ 
-        console.log( data.split(" ") );
-        let dataArr = data.split(' ');
-        dataArr.forEach(word => console.log('these words: ', word) )
-    }
-})
+let readFile = () => {
+    fs.readFile('./movies.txt', 'utf8', (error,data) => {
+        if(error) console.log(error)
+        else{ 
+            console.log( data.split(" ") );
+            let dataArr = data.split(' ');
+            dataArr.forEach(word => console.log('these words: ', word) )
+        }
+    })
+}
 
-fs.writeFile('food.txt', 'I made a food file', err => {
-    if (err) console.log(err)
-    else {fs.readFile('food.txt', 'utf8', (err,data) => {
+let writeFile = () => {
+    fs.writeFile('food.txt', 'I made a food file', err => {
         if (err) console.log(err)
-        else {console.log(data)}
-    })}
-})
-let argThree = process.argv[2]
-let searchTerm = process.argv[3];
+        else {fs.readFile('food.txt', 'utf8', (err,data) => {
+            if (err) console.log(err)
+            else {console.log(data)}
+        })}
+    })
+}
 
-console.log('LOOK EXPONENTIATION: ', 3 ** 5)
+let startSearch = process.argv[2]
+
+
 
 const getMovie = (data) => {
     request(`http://www.omdbapi.com/?t=${data}&apikey=trilogy`, (err,response,body) => {
@@ -133,27 +137,27 @@ const getMovie = (data) => {
     })
 }
 
-if (argThree === 'movie') {
-    let newString = '';
-    for(let i = 3; i < process.argv.length; i++) {
+// if (argThree === 'movie') {
+//     let newString = '';
+//     for(let i = 3; i < process.argv.length; i++) {
         
-        newString = `${newString} ${process.argv[i]}`
-    }
-    getMovie(newString)
-    console.log(newString)
-}
+//         newString = `${newString} ${process.argv[i]}`
+//     }
+//     getMovie(newString)
+//     console.log(newString)
+// }
 
-else if (argThree === 'sort') {
-    let newArr = [];
-   for(let i = 3; i < process.argv.length; i++) {
-       newArr.push(process.argv[i])
+// else if (argThree === 'sort') {
+//     let newArr = [];
+//    for(let i = 3; i < process.argv.length; i++) {
+//        newArr.push(process.argv[i])
     
-   }
-    let sortedArr = newArr.sort((a,b) => {
-        return a-b
-    })
-    console.log(typeof sortedArr, sortedArr)
-}
+//    }
+//     let sortedArr = newArr.sort((a,b) => {
+//         return a-b
+//     })
+//     console.log(typeof sortedArr, sortedArr)
+// }
 
 
 /*
@@ -187,5 +191,5 @@ else if (argThree === 'sort') {
 */
 
 
-// module.exports = getMiddle;
-// module.exports = multiply;
+module.exports = getMiddle;
+module.exports = multiply;
