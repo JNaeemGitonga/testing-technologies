@@ -8,3 +8,4 @@ exports.DATABASE_URL = process.env.DATABASE_URL ||
                         'mysql://localhost/test';
 
 exports.SECRET = process.env.SECRET
+exports.APIKEY = process.env.googleApiKey

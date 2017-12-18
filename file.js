@@ -4,13 +4,14 @@ const request = require('request');
 const inquirer = require('inquirer');
 const NodeGeocoder = require('node-geocoder');
 const chk = require('chalk')
+const {APIKEY} = require('./config');
 
 
 const findLocation = location => {
     const geocoder = NodeGeocoder(options);
     var options = {
         provider: 'google',
-        httpAdapter: `https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key=AIzaSyCSYybDKFHB3PIVtYQ7YvFH9Sww9Bx8eIY`, // Default
+        httpAdapter: `https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key=${APIKEY}`, // Default
     };
     geocoder.geocode(location)
     .then(res => {
@@ -22,38 +23,38 @@ const findLocation = location => {
 }
 let start = () => {
     inquirer
-    .prompt([{
-        type:'list',
-        name: 'option',
-        choices:['Twiter', 'Movies', 'Spotify', 'Maps', 'Sort'],
-        message:'Where do you want to search?',
-    },{
-        type:'input',
-        name:'searchTerm',
-        message:'Tell me what you are looking for my dear.',
-         }])
-        .then(data => {
-              if (data.option === 'Movies') {
-                 
-                getMovie(data.searchTerm)
-            }
-            
-            else if (data.option === 'Sort') {
-                let newArr = [];
-               for(let i = 3; i < process.argv.length; i++) {
-                   newArr.push(process.argv[i])
+        .prompt([{
+            type:'list',
+            name: 'option',
+            choices:['Twiter', 'Movies', 'Spotify', 'Maps', 'Sort'],
+            message:'Where do you want to search?',
+        },{
+            type:'input',
+            name:'searchTerm',
+            message:'Tell me what you are looking for my dear.',
+            }])
+            .then(data => {
+                if (data.option === 'Movies') {
+                    
+                    getMovie(data.searchTerm)
+                }
                 
-               }
-                let sortedArr = newArr.sort((a,b) => {
-                    return a-b
-                })
-                console.log(typeof sortedArr, sortedArr)
-            }
+                else if (data.option === 'Sort') {
+                    let newArr = [];
+                for(let i = 3; i < process.argv.length; i++) {
+                    newArr.push(process.argv[i])
+                    
+                }
+                    let sortedArr = newArr.sort((a,b) => {
+                        return a-b
+                    })
+                    console.log(typeof sortedArr, sortedArr)
+                }
 
-            else if (data.option === 'Maps'){
-                findLocation(data.searchTerm)
-            }
-        })
+                else if (data.option === 'Maps'){
+                    findLocation(data.searchTerm)
+                }
+            })
 
 }
 
@@ -75,10 +76,8 @@ const getMiddle = function (word) {
         return word.charAt(Math.floor(length/2)) 
     }
     else if (length % 2 === 0) { 
-        // console.log(length)
         let middleOne = (length/2) -1;
         let middleTwo = length/2;
-        // console.log(middleOne, middleTwo)
         return word.substr(middleOne,2)
     }
 }
