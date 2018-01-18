@@ -4,6 +4,8 @@ const app            = express();
 const path           = require("path");
 const mysql          = require('mysql');
 const {DATABASE_URL,SECRET} = require('./config')
+
+console.log(app)
 const port = 8080;
 
 let server = {

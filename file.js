@@ -32,29 +32,29 @@ let start = () => {
             type:'input',
             name:'searchTerm',
             message:'Tell me what you are looking for my dear.',
-            }])
-            .then(data => {
-                if (data.option === 'Movies') {
+        }])
+        .then(data => {
+            if (data.option === 'Movies') {
                     
-                    getMovie(data.searchTerm)
-                }
-                
-                else if (data.option === 'Sort') {
-                    let newArr = [];
-                for(let i = 3; i < process.argv.length; i++) {
-                    newArr.push(process.argv[i])
+                getMovie(data.searchTerm)
+            }
+               
+            else if (data.option === 'Sort') {
+                let newArr = [];
+            for(let i = 3; i < process.argv.length; i++) {
+                newArr.push(process.argv[i])
                     
-                }
-                    let sortedArr = newArr.sort((a,b) => {
-                        return a-b
-                    })
-                    console.log(typeof sortedArr, sortedArr)
-                }
+            }
+                let sortedArr = newArr.sort((a,b) => {
+                    return a-b
+                })
+                console.log(typeof sortedArr, sortedArr)
+            }
 
-                else if (data.option === 'Maps'){
-                    findLocation(data.searchTerm)
-                }
-            })
+            else if (data.option === 'Maps'){
+                findLocation(data.searchTerm)
+            }
+        })
 
 }
 
@@ -72,7 +72,6 @@ const multiply = function (a, b) {
 const getMiddle = function (word) {
     let length = word.length
     if (length % 2 === 1) {
-        
         return word.charAt(Math.floor(length/2)) 
     }
     else if (length % 2 === 0) { 
