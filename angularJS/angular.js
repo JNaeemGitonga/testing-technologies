@@ -13,4 +13,4 @@ controllers.SimpleController = function ($scope) {
     ]
 }
 
-demoApp.controller()
+demoApp.controller(controllers)

@@ -5,35 +5,52 @@
         
     </head>
     <body>   
-        <div ng-controller='SimpleController'>
-            Name:
-            <input type='text' ng-model='name'/> {{name}}
-            <br />
-            <ul>
-                <li ng-repeat='cust in customers' >{{cust.name + ' ' + cust.city}} - {{cust.city}}</li>
-            </ul>
-
+        <div >
+            <!--PLACEHOLDER FOR VIEW-->
+            <div ng-view></div>
+            <a href='view2'>View2</a>
         </div>
         
         
         <!-- <script src='angular.js'></script> -->
         <script src='angular.min.js'></script>
         <script>
-            const demoApp = angular.module('demoApp', [])
+            const demoApp = angular.module('demoApp', ['ngRoute']);
 
-            const controllers = {};
+           
+            demoApp.config(function($routeProvider) {
+                $routeProvider
+                    .when('/', {
+                        controller:'SimpleController',
+                        templateUrl:'View1.html'
+                    })
+                    .when('/view2',{
+                        controller:'SimpleController',
+                        templateUrl:'View2.html'
+                    })
+                    .otherwise({redirectTo:'/'})
+            })
 
-            controllers.SimpleController = function ($scope) {
+            demoApp.controller('SimpleController', function ($scope) {
                 
                 $scope.customers = [
+                {name:'Kenya', city:'santo domingo'},
                 {name:'Jaha', city:'atlanta'},
-                {name:'Romoke', city:'london'},
-                {name:'Kenya', city:'santo domingo'}
-                ]
-            }
+                {name:'Romoke', city:'london'}
+                ];
 
-            demoApp.controller(controllers)
-            console.log(controllers.SimpleController)
+                $scope.addCustomer = function () {
+                    $scope.customers.push(
+                        {
+                            name:$scope.newCustomer.name,
+                            city:$scope.newCustomer.city
+                        }
+                    )
+                }
+            }) 
+
+          
+
         </script>
     </bod>
 </html>
