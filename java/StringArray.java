@@ -2,7 +2,7 @@ public class StringArray {
 
     
     
-    public static void main(String[] args) {
+    public StringArray (String[] args) {
         String[] strArr = new String[2];
         strArr[0] = "be healthy";
         strArr[1] = "live long and prosper";

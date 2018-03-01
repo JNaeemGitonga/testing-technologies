@@ -1,5 +1,6 @@
 // const yola = require('./yola');
 const fs = require('fs');
+const path = require('path')
 const request = require('request');
 const inquirer = require('inquirer');
 const NodeGeocoder = require('node-geocoder');
@@ -98,9 +99,9 @@ const getMiddle = function (word) {
     }
 
 */
-
+var rex = /\\/
 console.log('line 39',getMiddle('asssasasasasTTasasasasas'))
-
+console.log(__filename)
 let readFile = () => {
     fs.readFile('./movies.txt', 'utf8', (error,data) => {
         if(error) console.log(error)
