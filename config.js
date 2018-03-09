@@ -3,9 +3,9 @@
 
 require('dotenv').config();
 
-exports.DATABASE_URL = process.env.DATABASE_URL ||
+module.exports.DATABASE_URL = process.env.DATABASE_URL ||
                         global.DATABASE_URL ||
                         'mysql://localhost/test';
 
-exports.SECRET = process.env.SECRET
-exports.APIKEY = process.env.googleApiKey
+module.exports.SECRET = process.env.SECRET
+module.exports.GOOGLE_API_KEY = process.env.GOOGLE_API_KEY
