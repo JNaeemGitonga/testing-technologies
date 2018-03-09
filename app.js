@@ -1,58 +1,79 @@
 'use strict'; /* global $ */
+const fs = require('fs')
+// const state = {
+//     line:null,
+//     buttons:['elephant', 'horse', 'ass', 'drunken monkey']
 
-const state = {
-    line:null,
-    buttons:['elephant', 'horse', 'ass', 'drunken monkey']
-
-}
+// }
 
 
-$(function() {
-    $('#boxes-container').on('click', '.boxes', function() {
-        let boxType = $(this).attr('data-box-type')
-        console.log(boxType)
+// $(function() {
+//     $('#boxes-container').on('click', '.boxes', function() {
+//         let boxType = $(this).attr('data-box-type')
+//         console.log(boxType)
         
-    })
-    $('p').click( () =>alert('Iwork'));
-    $('#form').submit((e) => {
-        e.preventDefault();
-        let input = $('.input1').val()
-        console.log('i work', input);
-        // state.line = $('.input1').val();
-        state.buttons.push(input)
-        let obj = {test:[`${input}`]}
-        $.post('/test/I_Love_me',obj, res => console.log(res) )
-        $('.input1').val('') ; 
-    })
+//     })
+//     $('p').click( () =>alert('Iwork'));
+//     $('#form').submit((e) => {
+//         e.preventDefault();
+//         let input = $('.input1').val()
+//         console.log('i work', input);
+//         // state.line = $('.input1').val();
+//         state.buttons.push(input)
+//         let obj = {test:[`${input}`]}
+//         $.post('/test/I_Love_me',obj, res => console.log(res) )
+//         $('.input1').val('') ; 
+//     })
 
 
-    $('.get-state').click(() => {
-        $.get('/test/get', (res) => {
-            return Object.assign(state, res,{new:res} )
-        })
-        let buttons;
-        buttons = state.buttons.map((button,index) => {
-            return `<li id=${index} value=${button}> ${button} </li>`
-        })
-        $('.buttons').html(buttons)
+//     $('.get-state').click(() => {
+//         $.get('/test/get', (res) => {
+//             return Object.assign(state, res,{new:res} )
+//         })
+//         let buttons;
+//         buttons = state.buttons.map((button,index) => {
+//             return `<li id=${index} value=${button}> ${button} </li>`
+//         })
+//         $('.buttons').html(buttons)
 
-    })
+//     })
 
-    $('ul').on('click', 'li', function(){
-        console.log( $(this).text());
-    });
+//     $('ul').on('click', 'li', function(){
+//         console.log( $(this).text());
+//     });
 
     
-});
+// });
 
-let box = ['cardboard', 'wood', 'steel', 'gold']
+// let box = ['cardboard', 'wood', 'steel', 'gold']
 
-setTimeout(function(){
+// setTimeout(function(){
 
-    for ( let i = 0; i < box.length; i++) {
-        $('#boxes-container').append(
-            `<button class='boxes ${box[i]}' data-box-type=${box[i]}>${box[i]}</button>`
-        )
-    }
+//     for ( let i = 0; i < box.length; i++) {
+//         $('#boxes-container').append(
+//             `<button class='boxes ${box[i]}' data-box-type=${box[i]}>${box[i]}</button>`
+//         )
+//     }
 
-}, 5000)
+// }, 5000)
+
+
+const addNote = (title,body) => {
+    console.log(`Adding note ${title}, ${body}`)
+    fs.wr
+}
+
+const getAll = () => {
+    console.log('Getting all notes')
+}
+
+const getNote = title => console.log(`Getting ${title}`)
+
+const removeNote = title => console.log(`Removing ${title}`)
+
+module.exports = {
+    addNote,
+    getAll,
+    getNote,
+    removeNote
+}

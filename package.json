@@ -24,6 +24,7 @@
     "lodash": "^4.17.5",
     "mysql": "^2.15.0",
     "node-geocoder": "^3.21.1",
+    "superagent": "^3.8.2",
     "yargs": "^11.0.0"
   },
   "devDependencies": {
