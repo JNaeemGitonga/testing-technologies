@@ -23,7 +23,7 @@ app.use((req,res,next) => {
     the middleware below will stop all request and render the maintainence page
         because next() isn't called.
     KNOW: middleware is excecuted in the order that you call app.use()
-        so in the case of localhost:3000/page.html if you want it not render when visited
+        so in the case of localhost:3000/page.html if you want it to not render when visited
         you will need to place  line 34 under the maintainence app.use()  
 
 */

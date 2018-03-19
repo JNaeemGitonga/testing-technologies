@@ -49,4 +49,3 @@ describe('Simple functions', () => {
         })
     })
 })
-
