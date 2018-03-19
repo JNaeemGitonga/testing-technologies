@@ -1,4 +1,4 @@
-let db        = require('./db');
+var db        = require('./db');
 
 
 const handleSignup = (email, pswrd) => {

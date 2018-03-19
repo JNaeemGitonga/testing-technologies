@@ -6,7 +6,6 @@ const rewire    = require('rewire')
 
 const app = rewire('./app')
 
-console.dir(app.__set__)
 
 describe('app', ()=> {
 
